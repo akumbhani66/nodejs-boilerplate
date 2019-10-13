@@ -49,8 +49,7 @@ const createErrorResponse = (
   error = {},
   code = 500,
 ) => {
-  request.log.error({ err: error }, message);
-
+  console.log(error);
   return createResponse({
     response,
     code,

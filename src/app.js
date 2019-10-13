@@ -66,23 +66,6 @@ app.use(helmet());
  * Applciation Routes
  */
 
-// csrfProtection for all POSTs
-// except /pub/*
-// app.post(
-//   /^\/(?!((pub\/|login\/callback)|(api\/smartpass)|(api\/cms))).*/,
-//   csrfProtection,
-//   (req, res, next) => {
-//     req.log.debug('POST on API under CSRF protection');
-//     next();
-//   },
-// );
-
-// // csrfProtection for all PUTs
-// app.put('*', csrfProtection, (req, res, next) => {
-//   req.log.debug('PUT on API under CSRF protection');
-//   next();
-// });
-
 const tags = process.env.HEALTH_TAGS || 'unknown revision';
 const date = `${now.toLocaleTimeString()} ${now.toLocaleDateString()}`;
 app.get('/health', async (_req, res) =>
@@ -103,11 +86,11 @@ app.use('/api', internalApi);
 // app.use('/pub', publicApi);
 
 
-process.on('unhandledRejection', (reason, promise) => {
-  logger.error('Unhandled Rejection at:', {
-    err: (reason || {}).stack || reason,
-  });
-});
+// process.on('unhandledRejection', (reason, promise) => {
+//   logger.error('Unhandled Rejection at:', {
+//     err: (reason || {}).stack || reason,
+//   });
+// });
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
@@ -121,7 +104,6 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
 
 /**
  * Normalize a port into a number, string, or false.
