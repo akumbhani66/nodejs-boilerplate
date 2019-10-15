@@ -9,7 +9,7 @@ import {
 } from '../../../utils/response-utils';
 import validate from 'express-validation';
 import { User } from '../../../db/sequelize';
-import { verifyToken } from '../../middlewares';
+import { verifyToken } from '../../../middlewares';
 
 import { createUserValidator } from './users.validator';
 import { mailTo } from '../../../helpers.js';
