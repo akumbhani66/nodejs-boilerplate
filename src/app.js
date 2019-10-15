@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 import bodyParser from 'body-parser';
 import compression from 'compression';
 // import config from 'config';
@@ -13,7 +15,6 @@ import http from 'http';
 // import { getCsrfProtection, csrfToken } from 'server/middlewares/csrf';
 
 var debug = require('debug')('test:server');
-
 
 const now = new Date();
 const rootApp = express();
@@ -92,7 +93,7 @@ app.use('/api', internalApi);
 //   });
 // });
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(process.env.APP_PORT || '3000');
 app.set('port', port);
 
 var server = http.createServer(app);
@@ -162,7 +163,7 @@ function onListening() {
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  debug('Listening on ' + bind);
+  console.log('Listening on ' + bind);
 }
 
 

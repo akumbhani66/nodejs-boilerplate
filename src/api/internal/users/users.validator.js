@@ -7,8 +7,9 @@ import {
 
 const createUserSchema = Joi.object()
   .keys({
-    firstName: Joi.string().required(),
-    lastName: Joi.string().required(),
+    name: Joi.string().required(),
+    email: Joi.string().required(),
+    password: Joi.string().required(),
   })
   .required();
 
