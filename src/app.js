@@ -2,8 +2,6 @@ require('dotenv').config()
 
 import bodyParser from 'body-parser';
 import compression from 'compression';
-// import config from 'config';
-// import  from 'config/';
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import session from 'express-session';
@@ -19,18 +17,13 @@ var debug = require('debug')('test:server');
 const now = new Date();
 const rootApp = express();
 const app = express();
-// const logger = tammLogger.getService();
-// const csrfProtection = getCsrfProtection();
 
-// rootApp.disable('x-powered-by');
 app.disable('x-powered-by');
-// app.use(getMiddleware());
 
 //
 // Register Node.js middleware
 // -----------------------------------------------------------------------------
 app.use((req, res, next) => {
-  // https://jira.digitalx1.io/jira/browse/TQA-928
   req.headers['user-agent'] = `${req.headers['user-agent']}`.substr(0, 150);
   next();
 });
@@ -165,6 +158,5 @@ function onListening() {
     : 'port ' + addr.port;
   console.log('Listening on ' + bind);
 }
-
 
 export default app;

@@ -16,9 +16,7 @@ const sequelize = new Sequelize('cronMonitor', 'postgres', 'postgres', {
 
 const User = UserModel(sequelize, Sequelize)
 
-// Blog.belongsToMany(Tag, { through: BlogTag, unique: false })
-// Tag.belongsToMany(Blog, { through: BlogTag, unique: false })
-// Blog.belongsTo(User);
+// UserBlog.belongsTo(Blog);
 
 sequelize.sync({ force: false })
   .then(() => {

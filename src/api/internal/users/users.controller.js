@@ -181,11 +181,10 @@ router.post('/register', createUser);
 router.post('/forgot-password', forgotPassword);
 router.post('/:token/reset-password', resetPassword);
 
-
-router.get('/', verifyToken,/*validate(getUsers),*/ getAllUsers);
-router.get('/:id', verifyToken,/*validate(getOneUser),*/ getOneUser);
-router.put('/:id', verifyToken,/*validate(editUser),*/ editUser);
-router.delete('/:id', verifyToken,/* validate(deleteUser)*/ deleteUser);
+router.get('/', verifyToken, getAllUsers);
+router.get('/:id', verifyToken, getOneUser);
+router.put('/:id', verifyToken, editUser);
+router.delete('/:id', verifyToken, deleteUser);
 
 export default router;
 
