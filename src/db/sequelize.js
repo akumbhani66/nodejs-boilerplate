@@ -3,8 +3,8 @@ const UserModel = require('./models/user')
 
 require('dotenv').config()
 
-const sequelize = new Sequelize('cronMonitor', 'postgres', 'postgres', {
-  host: "127.0.0.1",
+const sequelize = new Sequelize(process.env.db, process.env.user, process.env.password, {
+  host: process.env.host,
   dialect: "postgres",
   pool: {
     max: 10,
