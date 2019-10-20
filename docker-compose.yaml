@@ -1,0 +1,49 @@
+version: '3'
+services:
+  postgresql:
+    image: postgres:alpine
+    # restart: always
+    ports:
+      - "${port}:5432"
+    environment:
+      - port
+      - host
+      - user
+      - password
+      - TZ=${timeZone}
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    expose:
+      - ${port}
+  
+  app:
+    image: akumbhani66/nodejs-boilerplate
+    ports: 
+      - "${APP_PORT}:3000"
+    environment: 
+      - NODE_ENV
+      - APP_PORT
+      - APP_HOST
+      # DB configuration
+      - host
+      - port
+      - user
+      - password
+      - dialect
+      # JWT secret
+      - secret
+      # SMTP configuration
+      - MAIL_SERVICE
+      - EMAIL
+      - PASSWORD
+    expose:
+      - 3000 
+    links:
+      - postgresql
+      
+  adminer:
+    image: adminer
+    ports:
+      - 8080:8080
+    links:
+      - postgresql
