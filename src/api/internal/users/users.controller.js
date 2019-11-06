@@ -41,11 +41,16 @@ export const createUser = async (req, res) => {
 
 	const hashedPassword = bcrypt.hashSync(password, 8);
 
-	let userResponse = await User.create({
-		name,
-		email,
-		password: hashedPassword
-	});
+	let userResponse;
+	try {
+		userResponse = await User.create({
+			name,
+			email,
+			password: hashedPassword
+		});
+	} catch (err) {
+		return createErrorResponse(req, res, err.errors[0].message, "Internal Server error");
+	}
 
 	res.json(userResponse);
 };
