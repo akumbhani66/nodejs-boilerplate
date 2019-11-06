@@ -7,7 +7,6 @@ import {
 	createSuccessResponse,
 	createErrorResponse,
 } from '../../../utils/response-utils';
-import validate from 'express-validation';
 import { User } from '../../../db/sequelize';
 import { verifyToken } from '../../../middlewares';
 

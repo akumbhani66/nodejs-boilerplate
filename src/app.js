@@ -12,10 +12,7 @@ import http from 'http';
 // import publicApi from './api/public/index';
 // import { getCsrfProtection, csrfToken } from 'server/middlewares/csrf';
 
-var debug = require('debug')('test:server');
-
 const now = new Date();
-const rootApp = express();
 const app = express();
 
 app.disable('x-powered-by');
@@ -37,7 +34,6 @@ app.use(
   }),
 );
 
-/* global GIT_SHORT */
 const name = `${process.env.SESSION_STORE_PREFIX}_GIT_SHORT_sid`;
 const ONE_AND_HALF_HOUR = 90 * 60 * 1000;
 app.use((req, res, next) => {

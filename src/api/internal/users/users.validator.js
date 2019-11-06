@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 import {
-  createSuccessResponse,
+  // createSuccessResponse,
   createErrorResponse,
 } from '../../../utils/response-utils';
 
