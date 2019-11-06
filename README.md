@@ -10,3 +10,5 @@
 - Write Test cases.
 - Dockerize APP.
 - Integrate with Travis CI for eslint with master branch.
+- Swagger API doc.
+- Add file upload endpoint.
